@@ -1,0 +1,6 @@
+services:
+  - type: worker
+    name: airport-collector-2020
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "python collect_single_year.py 2020"
