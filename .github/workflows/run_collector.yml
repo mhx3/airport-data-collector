@@ -1,0 +1,30 @@
+name: Run Airport Collector
+
+on:
+  workflow_dispatch:  # 手动触发
+
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: Install dependencies
+      run: pip install -r requirements.txt
+
+    - name: Run script
+      run: python collect_single_year.py 2020
+
+    - name: Upload result CSV
+      uses: actions/upload-artifact@v3
+      with:
+        name: airport-data-2020
+        path: historical_data/airport_data_2020.csv
