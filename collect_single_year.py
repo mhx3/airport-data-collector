@@ -17,7 +17,7 @@ def make_query(endpoint, params):
         params['bcircles'] = [params['bcircles']]
     
     max_retries = 3
-    retry_delay = 5
+    retry_delay = 3
     
     for attempt in range(max_retries):
         try:
@@ -150,7 +150,7 @@ def collect_airport_data(airport_name, iata, lat, lon, date):
 
 def get_processed_airports(year):
     """获取已处理的机场列表"""
-    output_dir = "CHINA/historical_data"
+    output_dir = "historical_data"
     if not os.path.exists(output_dir):
         return set()
     
@@ -183,7 +183,7 @@ def main():
     
     # 读取机场坐标
     try:
-        airports_df = pd.read_csv("CHINA/Airportlist.csv")
+        airports_df = pd.read_csv("Airportlist.csv")
     except Exception as e:
         print(f"读取机场列表失败: {str(e)}")
         sys.exit(1)
