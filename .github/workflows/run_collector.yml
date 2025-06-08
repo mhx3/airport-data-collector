@@ -1,8 +1,7 @@
 name: Run Airport Collector
 
 on:
-  workflow_dispatch:  # 手动触发
-
+  workflow_dispatch:
 
 jobs:
   run-script:
@@ -24,7 +23,7 @@ jobs:
       run: python collect_single_year.py 2020
 
     - name: Upload result CSV
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: airport-data-2020
         path: historical_data/airport_data_2020.csv
